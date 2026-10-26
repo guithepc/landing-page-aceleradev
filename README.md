@@ -1,11 +1,26 @@
 # Landing page AceleraDev
 
-Cópia estática do site atual em WordPress (https://aceleradev.com.br), base para a V2.
-
-- `site/`: HTML, CSS, JS, imagens e fontes baixados do site em produção
+- `v2/`: nova landing (V2), em HTML, CSS e JS puros
+- `site/`: cópia estática do site atual em WordPress (https://aceleradev.com.br), usada como referência
 - `tools/mirror.py`: script que gerou o `site/`
 
-## Rodar local
+## V2
+
+```bash
+cd v2 && python3 -m http.server 8000   # http://localhost:8000
+```
+
+Qualquer servidor estático serve (`npx serve v2`). Precisa ser HTTP porque o globo carrega `assets/world-110m.json` via `fetch`.
+
+- `index.html`: estrutura e textos de todas as seções
+- `css/styles.css`: tokens (cores, fontes) no `:root` e estilos por seção
+- `js/main.js`: cards de alunos, mural de prints, DMs com scroll horizontal, contadores e animações de entrada
+- `js/globe.js`: globo girando (d3 + topojson via CDN)
+- `assets/`: fotos, prints dos alunos (`wall/`), prints de DMs do LinkedIn (`dm/`) e o mapa
+
+Pendências: os pontos do globo são ilustrativos (os dados reais estão em resultados.aceleradev.com.br) e os botões de compra apontam para `#investimento` até ter o link do checkout.
+
+## Site atual (WordPress)
 
 ```bash
 python3 tools/mirror.py --serve   # http://localhost:8000
